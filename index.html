@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Playground - Your Web Game Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #1a0b2d; /* Darker purple */
+            --secondary-bg: #2d134d; /* Slightly lighter purple */
+            --text-color: #e0e0e0;
+            --accent-color-light: #8affc1; /* Mint green */
+            --accent-color-dark: #63d1a8; /* Darker mint green */
+            --star-color: #ffffff;
+            --aurora-color-1: #38b2ac; /* Teal */
+            --aurora-color-2: #805ad5; /* Purple */
+            --aurora-color-3: #f6ad55; /* Orange */
+            --aurora-speed: 10s;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+            background: var(--primary-bg);
+        }
+
+        /* --- Background Animation --- */
+        .background-wrap {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            background: linear-gradient(to bottom, var(--primary-bg), var(--secondary-bg));
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent url('data:image/svg+xml;base64,PHN2ZyB3aWR0a
