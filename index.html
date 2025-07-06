@@ -163,6 +163,50 @@
             font-size: 1.3em;
         }
 
+        .search-container {
+            margin: 20px auto 0;
+            max-width: 500px;
+            position: relative;
+            display: flex;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            border: 2px solid var(--primary-color);
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light-text);
+            font-size: 1em;
+            outline: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .search-input:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+        }
+
+        .search-button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--light-text);
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .search-button:hover {
+            color: var(--secondary-color);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
         .game-card p {
             font-size: 1em;
             color: #e0e0e0;
@@ -280,7 +324,15 @@
 
     <header>
         <h1>Arcade Nexus</h1>
-        <p>Your ultimate destination for classic and new web games!</p>
+        <p>Your ultimate destination for web games</p>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search games..." class="search-input">
+            <button class="search-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+            </button>
+        </div>
     </header>
 
     <nav>
@@ -408,6 +460,7 @@
 
         // DOM Elements
         const gameGrid = document.querySelector('.game-grid');
+        const searchInput = document.getElementById('searchInput');
         const navLinks = document.querySelectorAll('nav a');
         const mainContent = document.querySelector('main');
 
@@ -584,6 +637,22 @@
 
             requestAnimationFrame(animate);
         }
+
+        // Search functionality
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            if (searchTerm.length === 0) {
+                renderGames(games);
+                return;
+            }
+            
+            const filteredGames = games.filter(game => 
+                game.name.toLowerCase().includes(searchTerm) || 
+                game.description.toLowerCase().includes(searchTerm)
+            );
+            
+            renderGames(filteredGames);
+        });
 
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas(); // Initial resize
