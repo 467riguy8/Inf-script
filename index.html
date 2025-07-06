@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:description" content="Arcade Nexus is a upcoming game website under the ownership of Skrypt"/>
     <title>Arcade Nexus - Your Hub for Web Games</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         /* General Styles */
         :root {
@@ -18,13 +18,16 @@
 
         body {
             margin: 0;
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             color: var(--light-text);
-            overflow: hidden; /* Hide scrollbar for full background effect */
+            overflow-x: hidden; /* Prevent horizontal scroll */
             display: flex;
             flex-direction: column;
             min-height: 100vh;
             position: relative; /* For the canvas positioning */
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* Canvas for background animation */
@@ -50,7 +53,7 @@
         }
 
         header h1 {
-            font-family: 'Press Start 2P', cursive;
+            font-family: 'Rajdhani', sans-serif;
             color: var(--secondary-color);
             text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
             margin: 0;
@@ -110,7 +113,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            overflow-y: auto; /* Enable vertical scrolling */
+            max-height: calc(100vh - 200px); /* Account for header and footer */
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .game-grid {
@@ -150,7 +156,7 @@
         }
 
         .game-card h3 {
-            font-family: 'Press Start 2P', cursive;
+            font-family: 'Rajdhani', sans-serif;
             color: var(--secondary-color);
             margin-top: 0;
             margin-bottom: 10px;
@@ -158,9 +164,12 @@
         }
 
         .game-card p {
-            font-size: 0.9em;
-            color: #ccc;
+            font-size: 1em;
+            color: #e0e0e0;
             flex-grow: 1;
+            line-height: 1.5;
+            margin: 10px 0;
+            text-align: center;
         }
 
         .game-card .play-button {
@@ -204,16 +213,64 @@
             nav ul {
                 flex-direction: column;
                 gap: 10px;
+                padding: 0 10px;
             }
 
             nav ul li a {
-                padding: 10px 20px;
+                padding: 12px 20px;
                 display: block;
+                font-size: 0.9em;
             }
 
             .game-grid {
                 grid-template-columns: 1fr;
-                padding: 0 20px;
+                padding: 0 10px;
+                width: 100%;
+            }
+            
+            main {
+                padding: 20px 10px;
+                max-height: none;
+            }
+            
+            .about-content, .contact-content {
+                grid-column: 1 / -1;
+                text-align: left;
+                padding: 20px;
+                background: rgba(30, 30, 50, 0.9);
+                border-radius: 10px;
+                border: 1px solid var(--primary-color);
+                box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+                margin: 20px 0;
+                max-width: 800px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .about-content h2, .contact-content h2 {
+                color: var(--secondary-color);
+                margin-top: 0;
+                border-bottom: 2px solid var(--primary-color);
+                padding-bottom: 10px;
+                font-family: 'Rajdhani', sans-serif;
+            }
+            
+            .about-content p, .contact-content p {
+                font-size: 1.1em;
+                line-height: 1.7;
+                color: #e0e0e0;
+                margin-bottom: 15px;
+            }
+            
+            .contact-content a {
+                color: var(--primary-color);
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+            
+            .contact-content a:hover {
+                color: var(--secondary-color);
+                text-decoration: underline;
             }
         }
     </style>
@@ -240,38 +297,206 @@
     <main>
         <h2>Featured Games</h2>
         <div class="game-grid">
-            <a href="#" class="game-card">
-                <img src="https://via.placeholder.com/300x180/007bff/ffffff?text=Space+Invaders" alt="Space Invaders">
-                <h3>Moto X3M</h3>
-                <p>Drive your way to succes in this fun motorcycle ga
-                    e!</p>
-                <span class="play-button">Play Now</span>
-            </a>
-            <a href="#" class="game-card">
-                <img src="https://via.placeholder.com/300x180/28a745/ffffff?text=Candy+Crush" alt="Candy Crush">
-                <h3>Jelly Jam Match</h3>
-                <p>Match colorful jellies and solve sweet puzzles in this addictive game.</p>
-                <span class="play-button">Play Now</span>
-            </a>
-            <a href="#" class="game-card">
-                <img src="https://via.placeholder.com/300x180/dc3545/ffffff?text=Flappy+Bird" alt="Flappy Bird">
-                <h3>Winged Hero</h3>
-                <p>Guide your hero through challenging obstacles. How far can you fly?</p>
-                <span class="play-button">Play Now</span>
-            </a>
-            <a href="#" class="game-card">
-                <img src="https://via.placeholder.com/300x180/ffc107/333333?text=Tetris" alt="Tetris">
-                <h3>Block Mania</h3>
-                <p>Strategically place falling blocks to clear lines and achieve high scores.</p>
-                <span class="play-button">Play Now</span>
-            </a>
-        </div>
+                </div>
     </main>
 
     <footer>
         <p>&copy; 2025 Arcade Nexus. All rights reserved. | Powered by Retro Gaming</p>
     </footer>
 
+    <script>
+        // Game data
+        const games = [
+            { id: '100skibidistillwaterthosewhoknow', name: '100 Skibidis Till Water', description: 'Survive the onslaught! Click to play now.', category: 'action', image: 'Imgs/100skibidistillwaterthosewhoknow.png', url: 'Games/100skibidistillwaterthosewhoknow.html' },
+            { id: '10bullets', name: '10 Bullets', description: 'You only have 10 bullets. Make them count!', category: 'shooter', image: 'Imgs/10bullets.png', url: 'Games/10bullets.html' },
+            { id: '10minutestildawn', name: '10 Minutes Till Dawn', description: 'Hold out until dawn against waves of enemies.', category: 'action', image: 'Imgs/10minutestildawn.png', url: 'Games/10minutestildawn.html' },
+            { id: '12minibattles', name: '12 Mini Battles', description: 'Compete in a series of 12 wacky mini-games.', category: 'action', image: 'Imgs/12minibattles.png', url: 'Games/12minibattles.html' },
+            { id: '1v1lol', name: '1v1.lol', description: 'Build and battle in this intense 1v1 shooter.', category: 'shooter', image: 'Imgs/1v1lol.png', url: 'Games/1v1lol.html' },
+            { id: '2048', name: '2048', description: 'Slide tiles and combine them to reach 2048.', category: 'strategy', image: 'Imgs/2048.png', url: 'Games/2048.html' },
+            { id: 'ageofwar', name: 'Age of War', description: 'Evolve through the ages and destroy your enemy\'s base.', category: 'strategy', image: 'Imgs/ageofwar.png', url: 'Games/ageofwar.html' },
+            { id: 'ageofwar2', name: 'Age of War 2', description: 'The classic strategy game returns with new units and ages.', category: 'strategy', image: 'Imgs/ageofwar2.png', url: 'Games/ageofwar2.html' },
+            { id: 'amongus', name: 'Among Us', description: 'Work together, but beware the imposter!', category: 'strategy', image: 'Imgs/amongus.png', url: 'Games/amongus.html' },
+            { id: 'angrybirds', name: 'Angry Birds', description: 'Launch birds to topple the pigs\' defenses.', category: 'action', image: 'Imgs/angrybirds.png', url: 'Games/angrybirds.html' },
+            { id: 'asteroids', name: 'Asteroids', description: 'A classic arcade shooter. Blast the asteroids and survive!', category: 'shooter', image: 'Imgs/asteroids.png', url: 'Games/asteroids.html' },
+            { id: 'awesometanks', name: 'Awesome Tanks', description: 'Upgrade your tank and cause destruction.', category: 'action', image: 'Imgs/awesometanks.png', url: 'Games/awesometanks.html' },
+            { id: 'awesometanks2', name: 'Awesome Tanks 2', description: 'More levels, more upgrades, more explosions!', category: 'action', image: 'Imgs/awesometanks2.png', url: 'Games/awesometanks2.html' },
+            { id: 'badicecream', name: 'Bad Ice-Cream', description: 'Collect all the fruit while avoiding enemies.', category: 'action', image: 'Imgs/badicecream.png', url: 'Games/badicecream.html' },
+            { id: 'basketballstars', name: 'Basketball Stars', description: 'Show off your skills in this 1-on-1 basketball game.', category: 'action', image: 'Imgs/basketballstars.png', url: 'Games/basketballstars.html' },
+            { id: 'bitlife', name: 'BitLife', description: 'A life simulation game where you can be anything.', category: 'strategy', image: 'Imgs/bitlife.png', url: 'Games/bitlife.html' },
+            { id: 'bloonsTD1', name: 'Bloons TD 1', description: 'The original tower defense classic. Pop all the bloons!', category: 'strategy', image: 'Imgs/bloonsTD1.png', url: 'Games/bloonsTD1.html' },
+            { id: 'bloonsTD2', name: 'Bloons TD 2', description: 'More towers, more bloons, more strategy.', category: 'strategy', image: 'Imgs/bloonsTD2.png', url: 'Games/bloonsTD2.html' },
+            { id: 'bobtherobber', name: 'Bob the Robber', description: 'Use stealth and skill to pull off heists.', category: 'strategy', image: 'Imgs/bobtherobber.png', url: 'Games/bobtherobber.html' },
+            { id: 'boxhead2playrooms', name: 'Boxhead 2Play Rooms', description: 'Survive endless waves of zombies with a friend.', category: 'shooter', image: 'Imgs/boxhead2playrooms.png', url: 'Games/boxhead2playrooms.html' },
+            { id: 'cookieclicker', name: 'Cookie Clicker', description: 'The classic idle game. Click for cookies!', category: 'action', image: 'Imgs/cookieclicker.png', url: 'Games/cookieclicker.html' },
+            { id: 'crossyroad', name: 'Crossy Road', description: 'Why did the chicken cross the road? Find out!', category: 'action', image: 'Imgs/crossyroad.png', url: 'Games/crossyroad.html' },
+            { id: 'cuttherope', name: 'Cut the Rope', description: 'Feed Om Nom candy in this physics-based puzzle game.', category: 'strategy', image: 'Imgs/cuttherope.png', url: 'Games/cuttherope.html' },
+            { id: 'doom', name: 'Doom', description: 'The legendary first-person shooter. Rip and tear!', category: 'shooter', image: 'Imgs/doom.png', url: 'Games/doom.html' },
+            { id: 'ducklife', name: 'Duck Life', description: 'Train your duckling to become a champion racer.', category: 'action', image: 'Imgs/ducklife.png', url: 'Games/ducklife.html' },
+            { id: 'ducklife4', name: 'Duck Life 4', description: 'The biggest Duck Life adventure yet!', category: 'action', image: 'Imgs/ducklife4.png', url: 'Games/ducklife4.html' },
+            { id: 'earntodie', name: 'Earn to Die', description: 'Drive through a zombie apocalypse, upgrading your car along the way.', category: 'action', image: 'Imgs/earntodie.png', url: 'Games/earntodie.html' },
+            { id: 'fancypantsadventure', name: 'Fancy Pants Adventure', description: 'Run, jump, and slide through this stylish stickman world.', category: 'action', image: 'Imgs/fancypantsadventure.png', url: 'Games/fancypantsadventure.html' },
+            { id: 'fireboyandwatergirl', name: 'Fireboy and Watergirl', description: 'Solve puzzles together in the Forest Temple.', category: 'strategy', image: 'Imgs/fireboyandwatergirl.png', url: 'Games/fireboyandwatergirl.html' },
+            { id: 'fnaf', name: 'Five Nights at Freddy\'s', description: 'Survive five nights as a security guard at a haunted pizzeria.', category: 'action', image: 'Imgs/fnaf.png', url: 'Games/fnaf.html' },
+            { id: 'geographydash', name: 'Geometry Dash', description: 'Jump and fly your way through danger in this rhythm-based platformer.', category: 'action', image: 'Imgs/geometrydashlite.png', url: 'Games/geometrydashlite.html' },
+            { id: 'gunmayhem', name: 'Gun Mayhem', description: 'A fast-paced arena shooter. Blast your opponents off the stage!', category: 'shooter', image: 'Imgs/gunmayhem.png', url: 'Games/gunmayhem.html' },
+            { id: 'gunmayhem2', name: 'Gun Mayhem 2', description: 'More mayhem, more guns, more fun!', category: 'shooter', image: 'Imgs/gunmayhem2.png', url: 'Games/gunmayhem2.html' },
+            { id: 'happywheels', name: 'Happy Wheels', description: 'A ragdoll physics game with a dark sense of humor.', category: 'action', image: 'Imgs/happywheels.png', url: 'Games/happywheels.html' },
+            { id: 'holeio', name: 'Hole.io', description: 'Absorb everything in your path to become the biggest hole in the city.', category: 'action', image: 'Imgs/holeio.png', url: 'Games/holeio.html' },
+            { id: 'impossiblequiz', name: 'The Impossible Quiz', description: 'A quiz with tricky questions and unexpected answers.', category: 'strategy', image: 'Imgs/impossiblequiz.png', url: 'Games/impossiblequiz.html' },
+            { id: 'jacksmith', name: 'Jacksmith', description: 'Craft weapons for your warriors in this hands-on blacksmithing game.', category: 'strategy', image: 'Imgs/jacksmith.png', url: 'Games/jacksmith.html' },
+            { id: 'jetpackjoyride', name: 'Jetpack Joyride', description: 'Fly a jetpack through a lab, dodging obstacles and collecting coins.', category: 'action', image: 'Imgs/jetpackjoyride.png', url: 'Games/jetpackjoyride.html' },
+            { id: 'learntofly', name: 'Learn to Fly', description: 'Help a penguin learn to fly in this classic launcher game.', category: 'action', image: 'Imgs/learntofly.png', url: 'Games/learntofly.html' },
+            { id: 'madalinstuntcars', name: 'Madalin Stunt Cars', description: 'Perform insane stunts in a variety of supercars.', category: 'action', image: 'Imgs/madalinstuntcars.png', url: 'Games/madalinstuntcars.html' },
+            { id: 'mariokart64', name: 'Mario Kart 64', description: 'The classic N64 racer is here!', category: 'action', image: 'Imgs/mariokart64.png', url: 'Games/mariokart64.html' },
+            { id: 'minecraft1-8-8', name: 'Minecraft', description: 'The legendary sandbox game. Build, explore, survive.', category: 'action', image: 'Imgs/minecraft1-8-8.png', url: 'Games/minecraft1-8-8.html' },
+            { id: 'motox3m', name: 'Moto X3M', description: 'A thrilling bike racing game with challenging levels.', category: 'action', image: 'Imgs/motox3m.png', url: 'Games/motox3m.html' },
+            { id: 'ovo', name: 'OvO', description: 'A fast-paced platformer where you must use parkour to reach the goal.', category: 'action', image: 'Imgs/ovo.png', url: 'Games/ovo.html' },
+            { id: 'papaspizzeria', name: 'Papa\'s Pizzeria', description: 'Manage a busy pizzeria, taking orders and baking pizzas.', category: 'strategy', image: 'Imgs/papapizzagood.png', url: 'Games/papapizzagood.html' },
+            { id: 'plantsvszombies', name: 'Plants vs. Zombies', description: 'Defend your home from a zombie invasion with an arsenal of plants.', category: 'strategy', image: 'Imgs/plantsvszombies.png', url: 'Games/plantsvszombies.html' },
+            { id: 'raftwars', name: 'Raft Wars', description: 'Defend your treasure from greedy pirates in this physics-based shooter.', category: 'shooter', image: 'Imgs/raftwars.png', url: 'Games/raftwars.html' },
+            { id: 'retrobowl', name: 'Retro Bowl', description: 'The perfect game for the armchair quarterback.', category: 'action', image: 'Imgs/retrobowl.png', url: 'Games/retrobowl.html' },
+            { id: 'run', name: 'Run', description: 'Run and jump through a series of challenging 3D tunnels.', category: 'action', image: 'Imgs/run.png', url: 'Games/run.html' },
+            { id: 'run2', name: 'Run 2', description: 'More levels and new characters in this exciting sequel.', category: 'action', image: 'Imgs/run2.png', url: 'Games/run2.html' },
+            { id: 'run3', name: 'Run 3', description: 'Explore a vast new galaxy of tunnels and challenges.', category: 'action', image: 'Imgs/run3.png', url: 'Games/run3.html' },
+            { id: 'slope', name: 'Slope', description: 'Control a ball down a steep slope in this fast-paced 3D game.', category: 'action', image: 'Imgs/slope.png', url: 'Games/slope.html' },
+            { id: 'smashkarts', name: 'Smash Karts', description: 'A fast-paced multiplayer kart battle game.', category: 'action', image: 'Imgs/smashkarts.png', url: 'Games/smashkarts.html' },
+            { id: 'strikeforceheroes', name: 'Strike Force Heroes', description: 'A modern combat arena shooter with tons of missions and upgrades.', category: 'shooter', image: 'Imgs/strikeforceheroes.png', url: 'Games/strikeforceheroes.html' },
+            { id: 'subwaysurferssanfrancisco', name: 'Subway Surfers', description: 'Dash as fast as you can through the subway!', category: 'action', image: 'Imgs/subwaysurferssanfrancisco.png', url: 'Games/subwaysurferssanfrancisco.html' },
+            { id: 'supermario64', name: 'Super Mario 64', description: 'The classic 3D platformer that changed gaming forever.', category: 'action', image: 'Imgs/supermario64.png', url: 'Games/supermario64.html' },
+            { id: 'supermariobros', name: 'Super Mario Bros.', description: 'The original NES classic. A timeless adventure.', category: 'action', image: 'Imgs/supermariobros.png', url: 'Games/supermariobros.html' },
+            { id: 'supersmashflash2', name: 'Super Smash Flash 2', description: 'A fan-made Smash Bros. game with a huge roster of characters.', category: 'action', image: 'Imgs/supersmashflash2.png', url: 'Games/supersmashflash2.html' },
+            { id: 'tanukisunset', name: 'Tanuki Sunset', description: 'Longboard down scenic mountain roads as a cool raccoon.', category: 'action', image: 'Imgs/tanukisunset.png', url: 'Games/tanukisunset.html' },
+            { id: 'tetris', name: 'Tetris', description: 'The timeless puzzle game. Fit the blocks and clear lines.', category: 'strategy', image: 'Imgs/tetris.png', url: 'Games/tetris.html' },
+            { id: 'thelaststand', name: 'The Last Stand', description: 'Defend your barricade against hordes of zombies.', category: 'shooter', image: 'Imgs/thelaststand.png', url: 'Games/thelaststand.html' },
+            { id: 'tosstheturtle', name: 'Toss the Turtle', description: 'Use cannons, bombs, and jetpacks to launch a turtle as far as possible.', category: 'action', image: 'Imgs/tosstheturtle.png', url: 'Games/tosstheturtle.html' },
+            { id: 'vex3', name: 'Vex 3', description: 'Run, jump, and slide through challenging obstacle courses.', category: 'action', image: 'Imgs/vex3.png', url: 'Games/vex3.html' },
+            { id: 'vex4', name: 'Vex 4', description: 'The stickman returns with new levels and challenges.', category: 'action', image: 'Imgs/vex4.png', url: 'Games/vex4.html' },
+            { id: 'vex5', name: 'Vex 5', description: 'Even more traps and parkour action await you in Vex 5.', category: 'action', image: 'Imgs/vex5.png', url: 'Games/vex5.html' },
+            { id: 'worldshardestgame', name: 'World\'s Hardest Game', description: 'Navigate your square through a series of incredibly difficult levels.', category: 'strategy', image: 'Imgs/worldshardestgame.png', url: 'Games/worldshardestgame.html' }
+        ];
+
+        // This is a helper function to add the rest of the games from your list with default values.
+        function addRemainingGames() {
+            const existingIds = new Set(games.map(g => g.id));
+            const gameNameList = `100skibidistillwaterthosewhoknow 10bullets 10minutestildawn 12minibattles 1 1on1soccer 1on1tennis 1v1doubleimprettysureitsexactlythesameidk 1v1lol 1v1lolifnoaboutblank 1v1lolnoaboutblank 1v1maybeidk 2048cupcakes 2048 2doom 2dshooting(1) 2Dshooting 3dash 3slices2 40exescape 4thandgoal 60secondsburgerrun 60secondssantarun 60secsantarun 8ballclassic 8ballpool 9007199254740992 99balls abandoned3 abandoned aceattorernefgsdg acecombat2 acecombat3 acegangstertaxi achievementunlocked achievmentunlocked2 achievmentunlocked3 achievmentunlocked achillies1fr achillies2 ADarkRoom adayintheoffice ADOFAI advancewars2 advancewars adventneon agariolite ageofwar2 ageofwar agesofconflict ahoysurvival ai akoopasrevenge2 akoopasrevenge akumanorgaiden alienhominidgba alienhominid alienskyinvasion alientransporter alienvspredator allocation amaze amidstthesky amigopancho2 amigopancho3 amigopancho4 amigopancho5 amigopancho6 amigopancho7 amigopancho amongus ancientsins angrybirds angrybirdsshowdown angrybirdsspace animalcrossingwildworld anotherworld apotris appleshooter appleworm aquaparkio archeryworldtour arewethereyet armormayhem2 arsonate ascent asmallworldcup asteroids attackhole avalanche AwesomePirates awesomeplanes awesometanks2 awesometanks B3313 babeltower babychiccoadventure babykaizo backrooms2D backrooms backyardbaseball09 backyardbaseball10 backyardbaseball backyardsoccer baconmaydie badicecream badmondaysimulator badparenting badpiggies badtimesim badtimesimulator baldisbasics baldisfunnewschoolultimate ballblast ballsandbricksgood ballsandbricks bananasimulator banditgunslingers banjokazooie banjotooie bankbreakout2 bankrobbery2 barryhasasecret baseballbros bas basketballfrvr basketballlegendsgoodywoody basketballlegends basketballstars basketbattle basketbros basketrandomgood basketrandom basketslamdunk2 batterup battles battlesim battlezone bazookaboy beamrider bearbarians ben10alienforce ben10omniverse ben10protector ben10racing ben10ultimatealien bfdibranches bigicetowertinysquare bigneontowertinysquare bigshotboxing Big_Time_Butter_Baron bigtowertinysquare2good bigtowertinysquare2 bigtowertinysquare bindingofisaccsheeptime bioevil4 bitlifeencrypted bitlife bitplanes blackjackbattle blackjack blacksmithlab blastronaut bleachvsnaruto blightborne blobsstory2 blockblast blockcraftparkour blockcraftshooter blockpost blockthepig blockysnakes bloodtournament bloons2 bloons bloonspp1 bloonspp2 bloonspp3 bloonspp4 bloonspp5 bloonsTD1 bloonsTD2 bloonsTD3 bloonsTD4 bloonsTD5 bloxorz BMX2 bntts bobtherobber2 bobtherobber5 bobtherobber bollybeat bomberman2 bomberman bottlecracks bottleflip3d bottlejump3d bounceback bouncymotors BountyOfOne bowlalt bowmasters boxhead2playrooms boxheadnightmare boxinglive2 boxingrandom bridgerace BTD1 btts2 btts bubbleshooter bubbleshooterpirate bubbletanks2 bubbletanks3 bubbletanksarenas bubbletanks bubbletankstd bubsy buckshotroulette bunnyland burgerandfrights burritobison2 burritobison burritobisonlaunchalibre burritobisonrevenge bushidoblade cactusmccoy2 cactusmccoy cannonballs3d cannonfodder capybaraclicker carcrash3 cardrawing careatscar2deluxe carkingarena carmods carstuntsdriving CartoonNetworkTableTennisUltimateTournament castlevania2 castlevania3 castlevaniaariaofsorrow castlevania castlevanianes castlewarsmodern catmario catslovecake2 cavestory celeste2 celeste cellardoor chaosfaction2 checkers cheesechompers3d cheshireinachatroom chessclassic chess chibiknight chickenscream chickenwar chipschallenge choppyorc chronotrigger CircloO2 civiballs2 civiballs classof09 cleanupio clearvision2 clearvision3 clearvision4 clearvision5 clearvision clusterrush cod4 codblackops coddefiance codmodernwarfare codworldatwar coffeemaker colorburst3d colormatch colorwatersort3d combopool commanderkeen4 commanderkeen5 commanderkeen6 conkersbadfurday contra cookieclickercool cookieclicker cookieclickergood coreball cotlk countersnipe crashbandicoot2 crashbandicoot crashteamracing crazycars crazycattle3d crazychicken3D crossyroad crunchball3000 cs1.6 csds csgoclicker curveball cuttherope cuttheropetimetravel cyberbungracing dadnme danktomb dborigins2 dborigins dbzattacksaiyans dbzdevolution dbzsuperwarriorssonic deadestate deadzed2 deadzed deblob2 decision2 decision3 decision decisionmedieval deepersleep deepestsword deepsleep defendyourcastle defendyournuts2 defendyournuts deltarune dementium diablo diamondhollow2 diamondhollow diddykongracing dieinthedungeon digdeep digdug26 digdug2 digdug digtochina dinodudes diredecks dogeminer2 dogeminer dokidokiliteratureclub donkeykong64 donkeykongcountry2 donkeykongcountry3 donkeykongcountry donkeykong donkeykongnes dontescape2 dontescape3 dontescape doodlejumpgoober doodlejump doom2 doom3pack doom64 doomemscripten doomgallery doom doompsalt doomps doomzio douchebaglife douchebagworkout downthemountain dragonballadvance DragonBallZTheLegacyofGoku Dragonxclient drawclimber drawtheline dreader driftboss drifthunters drivemad drivenwild drmario dubstep duckhunt ducklfe5 ducklife2 ducklife3 ducklife4 ducklife dud dukenukem3d dunkshot duskchild dyingdreams eaglercraft.1.5.2 Eaglercraft-Alpha-1.2.6-Offline Eaglercraft-Beta-1.3-Offline Eaglercraft-Indev-Offline EaglercraftL_1.9_v0_7_0_Offline_Signed EaglercraftX eagleride earntodie2 earntodie earthbound3 earthbound earthtaken2 earthtaken3 earthtaken earthwormjim2 earthwormjim edelweiss edyscarsimulator effinghail effingmachines effingworms effingzombies eggycar elasticface electricman2 emulator enchain endlesswar4 endlesswar5 endlesswar5wow endlesswar7 enduro epicbattlefantasy5 escalatingduel escaperoad2 escaperoad et etrianoddyssey evilglitch evolution excitebike64 factoryballs2 factoryballs3 factoryballs4 factoryballs fairytalevsonepiece famidash fancypantsadventure2 fancypantsadventure3 fancypantsadventure fancysnowboarding fashionbattle fattygenius feedus2 feedus3 feedus4 feedus5 feedus ff6 ffmysticquest FFsonic1 FFsonic2 FFsonic3 FFsonic4 FFsonic5 FFsonic61 FFsonic62 FIFA07 FIFA10 FIFA11 FIFA2000 fifa2000 FIFA99 FIFAinternationalsoccer FIFAroadtoworldcup98 FIFAsoccer06 FIFAsoccer95 FIFAsoccer96 FIFAsoccer97 FIFAstreet2 file_list finalearth2 finalfantasy finalfantasyII finalfantasytactics finalfantasyVI finalfantasyVIId2 finalfantasyVIId3 finalfantasyVII finalfantasyVIItheothertetrr finalninja fireblob fireboyandwatergirl2 fireboyandwatergirl3 fireboyandwatergirl5 fireboyandwatergirl6 fireboyandwatergirl fireemblem fisquarium fivenightsatbaldisredone fivenightsatshrekshotel flappydunk floodrunner2 floodrunner4 floodrunner fluidism FNAF2 FNAF3 fnaf4halloween FNAF4 fnafanimatronics FNAF fnafps fnafsl fnafucn fnafworld focus folderdungeon footballbros footballlegends forknsausage fortzone fpa4p1 fpa4p2 freerider2 freerider3 freerider fridaynightfunkin fruitninja funnyshooter2 fzero fzerox galaga gameandwatchcollection gangstabean gangsterbros gdlite generalchaos geometrydashlite geometrydashscratch geometryvibes getawayshootout getontop Gettothetopalthoughthereisnotop ghosttrick gimmietheairpod gladdihoppers gloryhunters glover goalsouthafrica gobble goingballs golddiggerfrvr goldeneye007 goldensun golforbit golfsunday goodbigtowertinysquare2 goodbigtowertinysquare goodboygalaxy goodmonkeymart googlebaseball googledino gorescriptclassic grandtheftautoadvance granny22 granny2 granny3 granny granturismo2 gravitymod grey-box-testing grimacebirthday grindcraft grn gta22 gta2alt gta2 gtaalt gtachina gta guesstheiranswer gunblood guncho gunknight gunmayhem2goof gunmayhem2 gunmayhem gunmayhemredux gunnight gunsmoke gunspin gymstack hajimeippo halflife halocombatdevolved handshakes handulum hanger2 happyroom happywheels hardwaretycoon Haroldsbadday harvestio harvestmoon64 harvestmoon hauntthehouse heit helixjump hextris hidenseek highstakes highwayracer2 highwaytraffic3d hillclimbracinglite HiNoHomo hipsterkickball hit8ox hobo2 hobo3 hobo4 hobo5 hobo6 hobo7 hobo hobovszombies holeio hollowknight houseofhazards hoverracerdrive hungryknight hungrylamu icantbelievegoogleflaggedmeforthenameofthefilelol iceagebaby icedodo icypurplehead idlebreakout idledice idleidlegamedev idleminertycoon idleminorzamnshes12 impossiblequiz impossiblequiz2 inclementemerald indiantrucksimiulator infinitecraft innkeeper insidestory interactivebuddy intoruins intospace2 intospace3 intospace intrusion iqball ironsnout ironsoldier jacksmithencryptedorsmthn jacksmith jefflings jellytruckgood jellytruck jetforcegemini jetpackjoyride jetrush johnnytrigger johnnyupgrade journeydownhill JUMP jumpingshell justfalllol justoneboss kaizomarioworld kalikan KenGriffeyJrPresentsMajorLeagueBaseball kingdomheartsdays kingdomheartsrecodedalt kingdomheartsrecoded kirby64 kirbyandtheamzingmirror kirbysadventure kirbysdreamland3 kirbysdreamland kirbysqueaksquad kirbysuperstar kirbysuperstarultra kittencannon klifur knifehit knightmaretower koopasrevenge lastfirered lasthorizon laststand2 leaderstrike learntofly2 learntofly3 learntofly learntoflyidle legobatman2superheroes legobatman legoindianajones2 legoindianajones legoninjago legostarwars lemmings leveldevil leverwarriors lightitup linerider linktothepast lockthedoor loderunner lonewolf losangelesshark lowknight loz1 lozlinkawakening lozminishcap lozoracleofseasons lozspirittracks luckyblocks madalinstuntcarsgood madalinstuntcars madalinstuntcarsmultiplayerfixed madden93 madden94 madden95 madden96 madden98 madden99 maddenfootball64 maddenfootball maddennfl2000 maddennfl2001 maddennfl2002 maddennfl madnessaccelerant madnesscombatdefense madnesscombatnexus madnesshydraulic madnessoffcolor madnessretaliation madskillsmotocross2 magictiles3 majorasmask makesureitsclosed managod marbleracer mario3 marioandluigisuperstarsaga mariobuilder64 mariocombat mariogolf MarioisMissingDoneRight mariokart64 mariokartds mariokartsupercircuit mariominusrabbids mariopaint marioparty2 marioparty3 mariopartyds mariosmysterymeat mariotennis maskedforcesunlimited mastermindworldconquerer matrixrampage mcfpsfbhd mcraerally meatboyflash meatboy medalofhonor medievalshark megaman2gba megaman2 megaman3 megaman4 megaman5 megaman6 megaman8 megaman megamanx2 megamanx3 megamanx4 megamanx megamanzero megamanzx megaminer melonplayground mergeroundracers metalgear metalgearsolid metalgearsolidps metalslugadvance metalslugmission1 metalslugmission2 MetalSonicHyperdrive metroid2 metroidfusion metroid metroidzeromission miamishark micromages mightyknight2 mightyknight mimic Minceraft-I-NotMine_V6 mindscape minecraft1-8-8 minhero minicrossword minimart minitooth miraginewar misslecommand mobcontrolhtml5 mobiusrevolution monkeymartenc monkeymart monstertracks monstertruckportstunt mortalkombat2 mortalkombat3 mortalkombatadvance mortalkombat motherload motox3m2 motox3m3 motox3m motox3mpoolparty motox3mspookyland motox3mwinter mountainbikeracer mspacman multitask mutilate-a-doll myfriendpedroarena myfriendpedro NBAhangtime NBAjam nbajamTE neonblaster netattack newgroundsrumble newsupermariobros NewSuperMarioWorld2AroundtheWorld newyorkshark nflblitz nfscarbonowncity nfsmostwanted nfsporcheunleashed nfsunderground2 nfsunderground ngon nhl2002 nhlhitz2003 n NicktoonsFreezeFrameFrenzy nightclubshowdown nightfire ninjabrawl nintendogslab nintendoworldcup nitromemustdie nomoregameasdsadfagfggdfs noobminer notyourpawn nplus nullkevin NutsandBoltsScrewingPuzzle nzp obby-99-will-lose obbyonlyup obeythegame ocarinaoftime offlineparadise omeganuggetclicker onebitadventure onenightasfreddy onepiecefighting onepiece onlyup Öoo operius oppositeday opposumcountry orbofcreation ordinarysonicromhack ormmimastickwithclsoitcanberememberedoyeahclalienhominid osu ovo2 ovodimensions ovofixed ovo pacman pacmansuperfast papabakeria papadonut papalouienighthunt2 papalouiewhenburgersattack papalouiewhenpizzasattack papalouiewhensundaesattack papapizzagood papapizzagoody papapizzamamamia papasburgerIIIAAAAA papascheeseria papascupcakeria papasfreezeria papashotdoggeria papaspancakeria papaspastaria papasscooperia papassushiria papastacomia papaswingeria paperio3d paperio paperiomania papermario papermariopromode papermariottyd parappatherapperalt parappatherapper parkingrush partnersintime peacekeeper penaltykicks penguindiner penguinpass pepsimanalt pepsiman perfectdark perfecthotel persona2alt persona2 personaalt persona phasma pheonixjusticeforall pheonixtrialsandyeartrhfasd pico8 picodriller picohot picolife piconightpunkin picosschool picovsbeardx piecesofcake pikwip pingpongchaos pinkbike pitfall pixelbattlegroundsio pixelcombat2 pixelquestlostidols pixelshooter pixelspeedrun pizzapapa pizzatower plangman plantsvszombies plazmaburst pogo3D pokeblack2alt pokeblack2. pokeblackalt pokeblack pokeblazeblack2redux pokeblue pokediamond pokeemeraldrandom pokegaia pokeheartgold pokelightplatinum pokemonclover pokemoncrystal pokemonemeraldcrest pokemonemerald pokemonemeraldimperium pokemonemeraldkaizo pokemonemeraldmini Pokemonemeraldrouge pokemonemeraldseaglass pokemonenergizedemerald pokemonevolvedsfdgsdfs pokemonfireredandleafgreenplusedition pokemonfirered pokemonfireredrandomized pokemongold pokemonleafgreen pokemonmysterydungeon pokemonquetzal Pokemonrocketedition pokemonruby pokemonsapphire pokemonsilver pokemonsnap pokemonstadium Pokémonstunningsteel pokemontowerdefense pokemonultimatefusion pokemonunbound pokemonvega pokemysteryexplorersofsky pokepearl pokeplatinum pokeplatinumrandomized pokered pokerunandbun pokescorchedsilver pokevoltwhite2redux pokevoyager pokewhite2alt pokewhite2 pokewhite pokeyellow polytrackalt polytrackgood polytrack polytrackworksnow porklike portaldefendersfastbreak portaldefendersTD portalflash portal porter potatomanseeksthetroof pou praxisfighterx prebronzeage precivilationbronzeage prehistoricshark primary pullfrog punchout punchthedrump puppethockey pushyourluck puyopuyofever pvz qbert quake2 quake3 quake64 quickieworld qwop racemaster3d racingarena radicalred radracer raftwars2 raftwars ragdollarchers ragdollhit ragdollio ragdollsoccer rainbowsixalt rainbowsix ray1 ray2 rayman raze2 raze3 raze reachthecore recoil redball2 redball3 redball4 redball4vol2 redball4vol3 redball redhanded redtierunner redvsblue2 redvsbluewar reignofcentipede renegades residentevil2 resizer resortempire retrobowlcollege retrobowlfixed retrobowl returnman2 returnman returntoriddleschool revolutionidle rhythmheaven rhythymymheaven ricochetkills2 riddlemiddleschool riddleschool2 riddleschool3 riddleschool445544444$$444444 riddleschool riddletransfer2 riddletransfer riddleuniversity ridgeracer roadoffury roadofthedead2 roadofthedead rocketjump rocketknightadventures rocketleague rocketpult rocketsoccerderby rodha roguesoul2 roguesoul rollerballer rollyvortex rooftopsnipers roomclicker rotate ruffle run2 run3 run russiancardriver sandboxels sandsofthecoliseum sandtris saszombieassault2 scrapmetal3 scrapyarddog scribblenauts scubabear seamongrel secretofmana sentryfortress sfk2 sfk sfklaststand sfkleague shc1 shc2 shc3 shift2 shift3 shift shinmegamitenseidevilsurvivor shogunshowdown shortlife shrek2 shwultimatem sidepocket sierra7 silenthillalt silenthill skateit skibididibidygyattohiorizzingallovertheplacestillwatermangotheoryfemboydrool skibidiinthebackrooms skyrace3d sliceitall slideinthewoods slimelabratory slipways slitherio slope2player slope3 slope slotornot slowroads smadvance2 smadvance3 smashkarts smashremix smbc smbcrossover snailbob snakeis snakelike snipershot sniperv2 snowballio snowridergoodygumdrops snowrider snowriderrrr snowroad soccerbros soccerrandomgood soccerrandom solitaire sonic1contemporary Sonic1ScoreRush Sonic2ScoreRush sonic3andknuckles sonic3complete sonic3dblastdx sonicadvance2 sonicadvance2sp sonicadvance3 sonicadvance sonicandknuckles sonicbattle soniccd sonicclassiccollection sonicclassicheroes soniccolors sonicdeltaorigins SonicHellfireSaga sonicjam sonicmegamix sonicralt sonicrevert sonicr sonicrushadventure sonicrush sonicspinball sonicthehedgehog2 sonicthehedgehog3 sonicthehedgehog sonny2 souljumper spacebarclicker spacecompany spaceinvaders spaceiskey2 spaceiskey spaceiskeyxmas spacewaves speedstars spewer spiralroll sprunked sprunkiclicker sprunki squidplayground stackballio stacktris stackydash starfox64 starfox starraiders stateio station141 stealthassassin stealthmaster steelempire stickarchersbattle stickmanduel stickmangtacity stickmanhook StickmanKingdomclash stickmanstealingdiamond stickmerge stickminairship stickminbreakingbank stickminescapingprison stickminfleecomplex stickrpgcomplete stickslasher stickwar2 stickwar stormthehouse3 stormthehouse streangeropepolice streetfighter2 streetfighter2turbo streetfighteralpha3 strikeforceheroes2 strikeforceheroes3 strikeforceheroes subwaysurfersbarcelona subwaysurfersbeijing subwaysurfersberlin subwaysurfersbuenosaires subwaysurfershavana subwaysurfershouston subwaysurfersiceland subwaysurferslondon subwaysurfersmexico subwaysurfersmiami subwaysurfersmonaco subwaysurfersneworleans subwaysurferssanfrancisco subwaysurfersstpetersburg subwaysurferswinterholiday subwaysurferszurich sugarsugar suika suikapico sunandmoon superbomberman supercarrush supercastlevaniaVI superchibiknight superdarkdeception superdiagonalmario2 superfighters superhot superhotlinemiami superhouseofdeadninjas superkidadventure superliquidsoccer supermario63 supermario64ds supermario64 supermarioallstars supermariobros2 supermariobros2us supermariobros3 supermariobros3real supermariobros supermario supermariokart supermarioland2 supermarioland supermariomon supermariorpg supermarioworld2 supermarioworld SuperMarioWorldThe SecretOfThe7GoldenStatues supermetroid supermonkeyballjr supernoahsark3D superoliverworld superpunchout superpuzzlefighter2turboalt superpuzzlefighter2turbo superscribblenauts supersmashbros supersmashflash2butdifversion supersmashflash2 supersmashflash supertiltbros supremeduelist survevio survivalracev2 sushicat2 sushicat sushiunroll swerve switchblade swordandshieldultimateplus swordplay swordsandsandals2 swordsandsandals swordsandsouls sydneyshark tabletanks tabletennisworldtour tag TaikonoTatsujin taisei takeover tallmanrun tankmayhem tankpixel tanukisunset tanukisunsetuhhhhhhhh tapper tastyplanet tboilambeternal tecmobowl telephonetrouble telocation tempest2000 templeofboom templerun2 tempoverdose terra territorialio territorywar tetrisattack tetrisgba tetris theclassroom2 theclassroom3 theclassroom thedeepestsleep theenchantedcave2 theimpossiblegame thelaststand thelaststandunioncity themepark thepit thereisnofile thermomorph thisistheonlylevel2 thisistheonlylevel thisistheonlyleveltoo threegoblets throwapotatoagain throwapotato timeshooter2 timeshooter3 timewarriors tinyfishing toastarling toasterball tombofthemask tomodachicollection tonyhawkproskater tonyhawkskater2 tonyhawkskater4 tonyhawksunderground toomanytypes topspeedracing3d tosstheturtle towerblocks towercrash3d trace trafficjam3d trapthecat tripleplay2000 triviacrack trollfacequest10 trollfacequest11 trollfacequest12 trollfacequest13 trollfacequest1 trollfacequest2 trollfacequest3 trollfacequest4 trollfacequest5 trollfacequest6 trollfacequest7 trollfacequest8 trollfacequest9 trucksim tubejumpers tunnelrushbetter tunnelrush turbostars turokdinosaurhunter twistedmetal2 twistedmetal twoball3d ucds ufoswampoddysey ultimateassassian2 ultimateassassian3 Ultimatecardrivingsimulator ultimatemortalkombat3 ultimatemortalkombat ultrakill umstickmangameidkiforgor underneath undertaler unfairmario unfairmarioworkquestionmark unicyclehero uno upgradecomplete2 upgradecomplete upslash UZG vampiresurvivors vanguard vaportrails vex2 vex3 vex3xmas vex4 vex5 vex6 vex7 vex8 vexchallenges vex vexx3m2 vexx3m villager volleyrandom vollyballchallenge vvvvvv waluigitacostand warfare1944 warioland4 wariowarediy wariowareinc wartheknight waterpoolio wavedash waverace64 waverun webecomewhatwebehold webfishing whackthetheif whackyourboss whackyourcomputer wheely2 wheely3 wheely4 wheely5 wheely6 wheely7 wheely8 wheely windowsdoors winterfalling wipeout2097alt wipeout2097 witchcrafttd wolfenstein3d wolfenstein woodworm wordle worldcup98 worldshardestgame2 worldshardestgame3 worldshardestgame4 worldshardestgame wrestlebros Xevious yarsrevenge yellow YoshisStrangeQuest youarelucky youvs100skibidi zelda2thelegendoflink zeldaminishcap zenword zombieexploder zombieroad zombiesatemyneighboors zombopaclypse2 zombotron2 zombotron zombotronreboot zrist zuma zumashooter ʘ`;
+            const allGameNames = gameNameList.split(' ').filter(name => name.length > 0);
+
+            allGameNames.forEach(id => {
+                if (!existingIds.has(id)) {
+                    // Create a more readable name
+                    let name = id.replace(/([A-Z])/g, ' $1').replace(/(\d+)/g, ' $1');
+                    name = name.charAt(0).toUpperCase() + name.slice(1);
+                    
+                    // Simple categorization
+                    let category = 'action';
+                    if (id.includes('shooter') || id.includes('gun') || id.includes('raze') || id.includes('strike')) category = 'shooter';
+                    if (id.includes('war') || id.includes('idle') || id.includes('td') || id.includes('strategy') || id.includes('puzzle') || id.includes('tower')) category = 'strategy';
+                    
+                    games.push({
+                        id: id,
+                        name: name,
+                        description: 'An exciting web game. Click Play Now to start the fun!',
+                        category: category,
+                        image: `Imgs/${id}.png`,
+                        url: `Games/${id}.html`
+                    });
+                }
+            });
+        }
+        
+        addRemainingGames();
+
+        // DOM Elements
+        const gameGrid = document.querySelector('.game-grid');
+        const navLinks = document.querySelectorAll('nav a');
+        const mainContent = document.querySelector('main');
+
+        // Function to render games
+        function renderGames(gamesToRender = games) {
+            gameGrid.innerHTML = '';
+            
+            if (gamesToRender.length === 0) {
+                gameGrid.innerHTML = '<p style="color: var(--light-text); font-size: 1.2em; grid-column: 1 / -1;">No games available in this category. Check back later!</p>';
+                return;
+            }
+
+            gamesToRender.forEach(game => {
+                const gameCard = document.createElement('a');
+                gameCard.href = '#';
+                gameCard.className = 'game-card';
+                gameCard.dataset.gameId = game.id;
+                gameCard.innerHTML = `
+                    <img src="${game.image}" alt="${game.name}" onerror="this.onerror=null;this.src='https://placehold.co/300x180/1a1a2e/e0e0e0?text=Image+Not+Found';">
+                    <h3>${game.name}</h3>
+                    <p>${game.description}</p>
+                    <span class="play-button">Play Now</span>
+                `;
+                gameGrid.appendChild(gameCard);
+            });
+
+            // Add click event to new game cards
+            document.querySelectorAll('.game-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const gameId = card.dataset.gameId;
+                    const game = games.find(g => g.id === gameId);
+                    if (game) {
+                        window.open(game.url, '_blank');
+                    }
+                });
+            });
+        }
+
+        // Navigation click handler
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Update active state
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                
+                const category = link.textContent.toLowerCase();
+                
+                // Show different content based on nav item clicked
+                if (category === 'home') {
+                    mainContent.querySelector('h2').style.display = 'block';
+                    mainContent.querySelector('h2').textContent = 'Featured Games';
+                    renderGames(games);
+                } else if (['shooter', 'action', 'strategy'].includes(category)) {
+                    mainContent.querySelector('h2').style.display = 'block';
+                    const filteredGames = games.filter(game => game.category === category);
+                    renderGames(filteredGames);
+                    mainContent.querySelector('h2').textContent = `${category.charAt(0).toUpperCase() + category.slice(1)} Games`;
+                } else if (category === 'about us') {
+                    mainContent.querySelector('h2').style.display = 'none';
+                    gameGrid.innerHTML = `
+                        <div class="about-content">
+                            <h2>About Arcade Nexus</h2>
+                            <p>Welcome to Arcade Nexus, your ultimate destination for the best web games on the internet!</p>
+                            <p>Our mission is to provide high-quality, fun, and engaging games that you can play directly in your browser.</p>
+                            <p>Whether you're into action, puzzles, or strategy games, we've got something for everyone!</p>
+                        </div>
+                    `;
+                } else if (category === 'contact') {
+                    mainContent.querySelector('h2').style.display = 'none';
+                    gameGrid.innerHTML = `
+                        <div class="contact-content">
+                            <h2>Contact Us</h2>
+                            <p>Have questions or feedback? We'd love to hear from you!</p>
+                            <p>Email: <a href="mailto:contact@arcadenexus.com">contact@arcadenexus.com</a></p>
+                            <p>Follow us on social media for updates and new game announcements!</p>
+                        </div>
+                    `;
+                }
+            });
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGames();
+        });
+    </script>
     <script>
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
