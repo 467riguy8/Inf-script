@@ -173,6 +173,36 @@
             display: flex;
         }
 
+        .category-filters {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .category-filters button {
+            padding: 10px 25px;
+            font-size: 1em;
+            font-weight: 600;
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--light-text);
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .category-filters button:hover,
+        .category-filters button.active {
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
+            box-shadow: 0 0 15px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
         .search-input {
             width: 100%;
             padding: 12px 45px 12px 15px;
@@ -344,15 +374,15 @@
     <nav>
         <ul>
             <li><a href="#" class="active">Home</a></li>
-            <li><a href="soon.html">Shooter</a></li>
-            <li><a href="soon.html">Action</a></li>
-            <li><a href="soon.html">Strategy</a></li>
-            <li><a href="soon.html">About Us</a></li>
-            <li><a href="soon.html">Contact</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
     <main>
+        <div class="category-filters">
+            <!-- Category buttons will be dynamically inserted here -->
+        </div>
         <h2>All games</h2>
         <div class="game-grid">
                 </div>
@@ -520,9 +550,11 @@
         initParticles();
         animateParticles();
 
-        // Game Grid Rendering and Search Functionality
+        // Game Grid Rendering, Search, and Category Filtering
         const gameGrid = document.querySelector('.game-grid');
         const searchInput = document.getElementById('searchInput');
+        const categoryFiltersContainer = document.querySelector('.category-filters');
+        let currentCategory = 'all';
 
         function renderGames(filteredGames) {
             gameGrid.innerHTML = ''; // Clear existing games
@@ -542,17 +574,37 @@
 
         function filterGames() {
             const searchTerm = searchInput.value.toLowerCase();
-            const filtered = games.filter(game =>
-                game.name.toLowerCase().includes(searchTerm) ||
-                game.description.toLowerCase().includes(searchTerm) ||
-                game.category.toLowerCase().includes(searchTerm)
-            );
+            const filtered = games.filter(game => {
+                const matchesCategory = currentCategory === 'all' || game.category === currentCategory;
+                const matchesSearch = game.name.toLowerCase().includes(searchTerm) ||
+                                    game.description.toLowerCase().includes(searchTerm);
+                return matchesCategory && matchesSearch;
+            });
             renderGames(filtered);
+        }
+
+        function setupCategoryFilters() {
+            const categories = ['all', ...new Set(games.map(game => game.category))];
+            categoryFiltersContainer.innerHTML = ''; // Clear existing buttons
+            categories.forEach(category => {
+                const button = document.createElement('button');
+                button.textContent = category;
+                button.dataset.category = category;
+                if (category === 'all') button.classList.add('active');
+                button.addEventListener('click', () => {
+                    currentCategory = category;
+                    document.querySelectorAll('.category-filters button').forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    filterGames();
+                });
+                categoryFiltersContainer.appendChild(button);
+            });
         }
 
         searchInput.addEventListener('input', filterGames);
 
-        // Initial render of all games
+        // Initial setup
+        setupCategoryFilters();
         renderGames(games);
 
         // Removed all Three.js intro animation logic and related DOMContentLoaded handling
