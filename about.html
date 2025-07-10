@@ -1,1 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Chaos Domain</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FF4500; /* Fiery Orange-Red */
+            --secondary-color: #FF8C00; /* Lava Orange */
+            --dark-bg: #1a0505; /* Very dark red/brown for deep background */
+            --light-text: #e0e0e0;
+            --accent-glow: rgba(255, 69, 0, 0.7); /* Intense Orange-Red Glow */
+        }
 
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--light-text);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #300a0a 40%, #8b0000 70%, #ff4500 100%);
+            background-attachment: fixed;
+        }
+
+        header {
+            background-color: rgba(26, 5, 5, 0.8);
+            padding: 20px 40px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--secondary-color);
+            text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header p {
+            font-size: 1.1em;
+            margin-top: 10px;
+            color: var(--light-text);
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align content to the top */
+            position: relative;
+            z-index: 1;
+            box-sizing: border-box;
+        }
+
+        .about-content {
+            background: rgba(30, 10, 10, 0.9);
+            border-radius: 10px;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.2);
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            text-align: left;
+            box-sizing: border-box;
+        }
+
+        .about-content h2 {
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--secondary-color);
+            font-size: 2.2em;
+            margin-top: 0;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            text-shadow: 0 0 8px var(--primary-color);
+        }
+
+        .about-content p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+        }
+
+        .about-content p strong {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background-color: rgba(26, 5, 5, 0.8);
+            padding: 20px;
+            text-align: center;
+            border-top: 2px solid var(--primary-color);
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+            margin-top: auto;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                padding: 0 10px;
+            }
+
+            nav ul li a {
+                padding: 12px 20px;
+                display: block;
+                font-size: 0.9em;
+            }
+            
+            main {
+                padding: 20px 10px;
+            }
+
+            .about-content {
+                padding: 20px;
+            }
+
+            .about-content h2 {
+                font-size: 1.8em;
+            }
+
+            .about-content p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Chaos Domain</h1>
+        <p>Your ultimate destination for web games</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#" class="active">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="about-content">
+            <h2>About Chaos Domain</h2>
+            <p>Welcome to <strong>Chaos Domain</strong>, your premier online hub for a vast collection of unblocked games! Our mission is simple: to provide a safe, accessible, and exciting environment where you can dive into your favorite games whenever and wherever you are.</p>
+            <p>We understand the need for entertainment and a quick escape, which is why we hand pick our library to bring you a diverse range of genres—from action-packed adventures and strategic puzzles to exhilarating shooters and classic arcade titles. Whether you're looking to challenge yourself, unwind with a casual game, or discover new favorites, Chaos Domain has something for everyone.</p>
+            <p>Chaos Domain is proudly owned and operated by <strong>Skrypt</strong>, a name dedicated to delivering quality online experiences. We are committed to maintaining a constantly updated selection of games, ensuring smooth performance, and prioritizing user satisfaction.</p>
+            <p>Thank you for choosing Chaos Domain. Get ready to unleash the fun!</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Chaos Domain. All rights reserved. | Powered by Skrypt</p>
+    </footer>
+</body>
+</html>
