@@ -6,449 +6,13 @@
     <meta property="og:description" content="Chaos Domain is an upcoming game website under the ownership of Skrypt"/>
     <title>Chaos Domain - Your Place for unblocked games</title>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #FF4500;
-            --secondary-color: #FF8C00;
-            --dark-bg: #1a0505;
-            --light-text: #e0e0e0;
-            --accent-glow: rgba(255, 69, 0, 0.7);
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            color: var(--light-text);
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            position: relative;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        body.no-scroll {
-            overflow: hidden;
-        }
-
-        body.intro-active main,
-        body.intro-active footer,
-        body.intro-active header,
-        body.intro-active nav {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        body.intro-finished main,
-        body.intro-finished footer,
-        body.intro-finished header,
-        body.intro-finished nav {
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 0.5s ease-in, visibility 0.5s ease-in;
-        }
-
-        #intro-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, #1a0505 0%, #300a0a 50%, #8b0000 100%);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            animation: introFadeOut 0.5s ease-out 4.5s forwards;
-        }
-
-        #volcano-blast {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: radial-gradient(circle at center, #ff8c00 0%, #ff4500 50%, rgba(255, 0, 0, 0) 100%);
-            opacity: 0;
-            animation: blastErupt 3s ease-out forwards;
-            box-shadow: 0 0 50px 20px rgba(255, 69, 0, 0.7);
-        }
-
-        #intro-text {
-            font-family: 'Rajdhani', sans-serif;
-            color: var(--secondary-color);
-            font-size: 3em;
-            text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
-            margin-top: 20px;
-            opacity: 0;
-            animation: textFadeIn 1s ease-in 2s forwards;
-        }
-
-        @keyframes blastErupt {
-            0% {
-                transform: scale(0.1);
-                opacity: 0;
-                box-shadow: 0 0 5px 2px rgba(255, 69, 0, 0.7);
-            }
-            20% {
-                opacity: 1;
-                transform: scale(1.5);
-                box-shadow: 0 0 100px 50px rgba(255, 140, 0, 0.9);
-            }
-            60% {
-                opacity: 0.8;
-                transform: scale(2.5);
-                box-shadow: 0 0 150px 70px rgba(255, 69, 0, 0.6);
-            }
-            100% {
-                transform: scale(4);
-                opacity: 0;
-                box-shadow: 0 0 200px 100px rgba(255, 0, 0, 0.3);
-            }
-        }
-
-        @keyframes textFadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes introFadeOut {
-            0% {
-                opacity: 1;
-                visibility: visible;
-            }
-            100% {
-                opacity: 0;
-                visibility: hidden;
-                display: none;
-            }
-        }
-
-        #particle-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, #300a0a 40%, #8b0000 70%, #ff4500 100%);
-        }
-
-        header {
-            background-color: rgba(26, 5, 5, 0.8);
-            padding: 20px 40px;
-            text-align: center;
-            border-bottom: 2px solid var(--primary-color);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            position: relative;
-            z-index: 1;
-        }
-
-        header h1 {
-            font-family: 'Rajdhani', sans-serif;
-            color: var(--secondary-color);
-            text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
-            margin: 0;
-            font-size: 2.5em;
-        }
-
-        header p {
-            font-size: 1.1em;
-            margin-top: 10px;
-            color: var(--light-text);
-        }
-
-        nav {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 15px 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-            position: relative;
-            z-index: 1;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
-
-        nav ul li a {
-            color: var(--light-text);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-        }
-
-        nav ul li a:hover,
-        nav ul li a.active {
-            background-color: var(--primary-color);
-            color: var(--dark-bg);
-            transform: translateY(-3px);
-            box-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        main {
-            flex-grow: 1;
-            padding: 40px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-y: auto;
-            max-height: calc(100vh - 200px);
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .game-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin-top: 30px;
-        }
-
-        .game-card {
-            background-color: rgba(30, 10, 10, 0.9);
-            border: 2px solid var(--primary-color);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 20px rgba(255, 69, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .game-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 0 30px var(--accent-glow), 0 0 50px rgba(255, 69, 0, 0.4);
-        }
-
-        .game-card img {
-            max-width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border: 1px solid var(--secondary-color);
-        }
-
-        .game-card h3 {
-            font-family: 'Rajdhani', sans-serif;
-            color: var(--secondary-color);
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1.3em;
-        }
-
-        .search-container {
-            margin: 20px auto 0;
-            max-width: 500px;
-            position: relative;
-            display: flex;
-        }
-
-        .category-filters {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .category-filters button {
-            padding: 10px 25px;
-            font-size: 1em;
-            font-weight: 600;
-            font-family: 'Rajdhani', sans-serif;
-            color: var(--light-text);
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 2px solid var(--primary-color);
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-        }
-
-        .category-filters button:hover,
-        .category-filters button.active {
-            background-color: var(--primary-color);
-            color: var(--dark-bg);
-            box-shadow: 0 0 15px var(--accent-glow);
-            transform: translateY(-2px);
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 12px 45px 12px 15px;
-            border: 2px solid var(--primary-color);
-            border-radius: 25px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--light-text);
-            font-size: 1em;
-            outline: none;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        .search-input:focus {
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
-        }
-
-        .search-button {
-            position: absolute;
-            right: 5px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--light-text);
-            cursor: pointer;
-            padding: 5px 10px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .search-button:hover {
-            color: var(--secondary-color);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .game-card p {
-            font-size: 1em;
-            color: #e0e0e0;
-            flex-grow: 1;
-            line-height: 1.5;
-            margin: 10px 0;
-            text-align: center;
-        }
-
-        .game-card .play-button {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: var(--dark-bg);
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .game-card .play-button:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 0 10px var(--secondary-color);
-        }
-
-        footer {
-            background-color: rgba(26, 5, 5, 0.8);
-            padding: 20px;
-            text-align: center;
-            border-top: 2px solid var(--primary-color);
-            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5);
-            position: relative;
-            z-index: 1;
-            margin-top: auto; 
-            font-size: 0.9em;
-            color: #aaa;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8em;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 10px;
-                padding: 0 10px;
-            }
-
-            nav ul li a {
-                padding: 12px 20px;
-                display: block;
-                font-size: 0.9em;
-            }
-
-            .game-grid {
-                grid-template-columns: 1fr;
-                padding: 0 10px;
-                width: 100%;
-            }
-            
-            main {
-                padding: 20px 10px;
-                max-height: none;
-            }
-            
-            .about-content, .contact-content {
-                grid-column: 1 / -1;
-                text-align: left;
-                padding: 20px;
-                background: rgba(30, 10, 10, 0.9);
-                border-radius: 10px;
-                border: 1px solid var(--primary-color);
-                box-shadow: 0 0 20px rgba(255, 69, 0, 0.2);
-                margin: 20px 0;
-                max-width: 800px;
-                width: 100%;
-                box-sizing: border-box;
-            }
-            
-            .about-content h2, .contact-content h2 {
-                color: var(--secondary-color);
-                margin-top: 0;
-                border-bottom: 2px solid var(--primary-color);
-                padding-bottom: 10px;
-                font-family: 'Rajdhani', sans-serif;
-            }
-            
-            .about-content p, .contact-content p {
-                font-size: 1.1em;
-                line-height: 1.7;
-                color: #e0e0e0;
-                margin-bottom: 15px;
-            }
-            
-            .contact-content a {
-                color: var(--primary-color);
-                text-decoration: none;
-                transition: color 0.3s ease;
-            }
-            
-            .contact-content a:hover {
-                color: var(--secondary-color);
-                text-decoration: underline;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="intro-active">
     <div id="intro-screen">
         <div id="volcano-blast"></div>
         <h2 id="intro-text">Chaos Domain</h2>
+        <button id="skip-intro">Skip</button>
     </div>
 
     <canvas id="particle-canvas"></canvas>
@@ -456,14 +20,6 @@
     <header>
         <h1>Chaos Domain</h1>
         <p>Your ultimate destination for web games</p>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search games..." class="search-input">
-            <button class="search-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                </svg>
-            </button>
-        </div>
     </header>
 
     <nav>
@@ -475,11 +31,19 @@
     </nav>
 
     <main>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search games..." class="search-input">
+            <button class="search-button" aria-label="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+            </button>
+        </div>
         <div class="category-filters">
         </div>
         <h2>All Games</h2>
         <div class="game-grid" id="gameGrid">
-        </div>
+            </div>
     </main>
 
     <footer>
@@ -556,6 +120,7 @@
             { id: 'worldshardestgame', name: 'World\'s Hardest Game', description: 'Navigate your square through a series of incredibly difficult levels.', category: 'strategy', image: 'Imgs/worldshardestgame.png', url: 'Games/worldshardestgame.html' }
         ];
 
+        // --- Particle Background Logic ---
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -565,7 +130,7 @@
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            canvas.height = document.body.scrollHeight; // Adjust height to scroll with page
         }
 
         class Particle {
@@ -575,20 +140,17 @@
                 this.size = Math.random() * particleSize + 1;
                 this.speedX = Math.random() * 2 - 1 * particleSpeed;
                 this.speedY = Math.random() * 2 - 1 * particleSpeed;
-                
+
                 const red = Math.floor(Math.random() * (255 - 150) + 150);
                 const green = Math.floor(Math.random() * 100);
                 const blue = 0;
                 this.color = `rgba(${red}, ${green}, ${blue}, ${Math.random() * 0.5 + 0.2})`;
             }
-
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-
                 if (this.size > 0.2) this.size -= 0.01;
             }
-
             draw() {
                 ctx.fillStyle = this.color;
                 ctx.beginPath();
@@ -598,6 +160,7 @@
         }
 
         function createParticles() {
+            particles = []; // Clear existing particles on resize
             for (let i = 0; i < numParticles; i++) {
                 particles.push(new Particle(Math.random() * canvas.width, Math.random() * canvas.height));
             }
@@ -617,20 +180,16 @@
             }
             requestAnimationFrame(animateParticles);
         }
-
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-        createParticles();
-        animateParticles();
-
+        
+        // --- Game Display and Filtering Logic ---
         const gameGrid = document.getElementById('gameGrid');
         const searchInput = document.getElementById('searchInput');
         const categoryFiltersContainer = document.querySelector('.category-filters');
 
-        function displayGames(filteredGames) {
+        function originalDisplayGames(filteredGames) {
             gameGrid.innerHTML = '';
             if (filteredGames.length === 0) {
-                gameGrid.innerHTML = '<p style="color: var(--secondary-color); font-size: 1.2em; margin-top: 50px;">No games found matching your criteria.</p>';
+                gameGrid.innerHTML = '<p style="color: var(--secondary-color); font-size: 1.2em; margin-top: 50px; grid-column: 1 / -1;">No games found matching your criteria.</p>';
                 return;
             }
 
@@ -639,7 +198,7 @@
                 gameCard.href = game.url;
                 gameCard.classList.add('game-card');
                 gameCard.innerHTML = `
-                    <img src="${game.image}" alt="${game.name}">
+                    <img src="${game.image}" alt="${game.name}" loading="lazy">
                     <h3>${game.name}</h3>
                     <p>${game.description}</p>
                     <span class="play-button">Play Now</span>
@@ -647,69 +206,81 @@
                 gameGrid.appendChild(gameCard);
             });
         }
+        
+        function filterAndDisplay() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const activeCategory = document.querySelector('.category-filters button.active')?.dataset.category || 'all';
+
+            const filteredGames = games.filter(game => {
+                const matchesCategory = activeCategory === 'all' || game.category === activeCategory;
+                const matchesSearch = game.name.toLowerCase().includes(searchTerm) || game.description.toLowerCase().includes(searchTerm);
+                return matchesCategory && matchesSearch;
+            });
+
+            displayGames(filteredGames);
+        }
 
         function generateCategoryFilters() {
-            const categories = new Set(games.map(game => game.category));
-            const allButton = document.createElement('button');
-            allButton.textContent = 'All';
-            allButton.classList.add('active');
-            allButton.dataset.category = 'all';
-            categoryFiltersContainer.appendChild(allButton);
-
+            const categories = ['all', ...new Set(games.map(game => game.category))];
+            
             categories.forEach(category => {
                 const button = document.createElement('button');
-                button.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                button.textContent = category;
                 button.dataset.category = category;
+                if (category === 'all') {
+                    button.classList.add('active');
+                }
+                button.addEventListener('click', () => {
+                    document.querySelector('.category-filters button.active').classList.remove('active');
+                    button.classList.add('active');
+                    filterAndDisplay();
+                });
                 categoryFiltersContainer.appendChild(button);
             });
-
-            categoryFiltersContainer.addEventListener('click', (event) => {
-                if (event.target.tagName === 'BUTTON') {
-                    categoryFiltersContainer.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
-                    event.target.classList.add('active');
-                    filterGames(searchInput.value, event.target.dataset.category);
-                }
-            });
         }
-
-        function filterGames(searchTerm, category) {
-            let filtered = games;
-
-            if (searchTerm) {
-                const lowerCaseSearchTerm = searchTerm.toLowerCase();
-                filtered = filtered.filter(game =>
-                    game.name.toLowerCase().includes(lowerCaseSearchTerm) ||
-                    game.description.toLowerCase().includes(lowerCaseSearchTerm)
-                );
-            }
-
-            if (category && category !== 'all') {
-                filtered = filtered.filter(game => game.category === category);
-            }
-            displayGames(filtered);
-        }
-
-        searchInput.addEventListener('keyup', (event) => {
-            const activeCategoryButton = document.querySelector('.category-filters button.active');
-            const currentCategory = activeCategoryButton ? activeCategoryButton.dataset.category : 'all';
-            filterGames(event.target.value, currentCategory);
-        });
-
+        
+        // --- Page Initialization and Event Listeners ---
         document.addEventListener('DOMContentLoaded', () => {
-            generateCategoryFilters();
-            displayGames(games);
-
             const introScreen = document.getElementById('intro-screen');
-            document.body.classList.add('no-scroll');
+            const skipButton = document.getElementById('skip-intro');
 
-            introScreen.addEventListener('animationend', (event) => {
-                if (event.animationName === 'introFadeOut') {
-                    introScreen.style.display = 'none';
-                    document.body.classList.remove('no-scroll');
-                    document.body.classList.remove('intro-active');
-                    document.body.classList.add('intro-finished');
-                }
+            function finishIntro() {
+                introScreen.classList.add('hidden');
+                document.body.classList.remove('intro-active');
+                document.body.classList.add('intro-finished');
+                // We need to resize canvas again after main content is visible
+                setTimeout(resizeCanvas, 50); 
+            }
+            
+            // Handle skipping the intro
+            skipButton.addEventListener('click', finishIntro);
+            
+            // Automatically finish intro after animation
+            const introTimeout = setTimeout(finishIntro, 5000);
+
+            // Wrapper function for displayGames to add loading effect
+            window.displayGames = function(filteredGames) {
+                gameGrid.classList.add('loading');
+
+                setTimeout(() => {
+                    originalDisplayGames(filteredGames);
+                    gameGrid.classList.remove('loading');
+                }, 300);
+            }
+            
+            // Initial setup
+            resizeCanvas();
+            createParticles();
+            animateParticles();
+            
+            generateCategoryFilters();
+            filterAndDisplay();
+            
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                createParticles();
             });
+            searchInput.addEventListener('input', filterAndDisplay);
         });
     </script>
 </body>
