@@ -7,16 +7,67 @@
     <title>Chaos Domain - Settings</title>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* Base Theme (Default - Chaos) */
         :root {
-            --primary-color: #FF4500;
-            --secondary-color: #FF8C00;
-            --dark-bg: #1a0505;
-            --light-text: #e0e0e0;
+            --primary-color: #FF4500; /* OrangeRed */
+            --secondary-color: #FF8C00; /* DarkOrange */
+            --dark-bg: #1a0505; /* Very dark red-brown */
+            --light-text: #e0e0e0; /* Off-white */
             --accent-glow: rgba(255, 69, 0, 0.7);
             --input-bg: rgba(255, 255, 255, 0.1);
             --card-bg: rgba(30, 10, 10, 0.9);
+            --body-bg-gradient: linear-gradient(135deg, var(--dark-bg) 0%, #300a0a 40%, #8b0000 70%, #ff4500 100%);
+            --header-footer-bg: rgba(26, 5, 5, 0.8);
+            --nav-bg: rgba(0, 0, 0, 0.7);
+            --border-color: var(--primary-color);
+            --box-shadow-color: rgba(0, 0, 0, 0.5);
+            --settings-card-shadow: rgba(255, 69, 0, 0.2);
+            --button-cancel-bg: rgba(255, 255, 255, 0.1);
+            --button-cancel-border: var(--secondary-color);
+            --select-border: var(--secondary-color);
         }
 
+        /* Forest Realm Theme */
+        body.forest-theme {
+            --primary-color: #228B22; /* ForestGreen */
+            --secondary-color: #3CB371; /* MediumSeaGreen */
+            --dark-bg: #0A1A0A; /* Darker green-black */
+            --light-text: #F0FFF0; /* Honeydew */
+            --accent-glow: rgba(34, 139, 34, 0.7);
+            --input-bg: rgba(0, 0, 0, 0.1);
+            --card-bg: rgba(15, 40, 15, 0.9);
+            --body-bg-gradient: linear-gradient(135deg, #102010 0%, #204020 40%, #408040 70%, #228B22 100%);
+            --header-footer-bg: rgba(10, 26, 10, 0.8);
+            --nav-bg: rgba(0, 15, 0, 0.7);
+            --border-color: var(--primary-color);
+            --box-shadow-color: rgba(0, 0, 0, 0.5);
+            --settings-card-shadow: rgba(34, 139, 34, 0.2);
+            --button-cancel-bg: rgba(255, 255, 255, 0.1);
+            --button-cancel-border: var(--secondary-color);
+            --select-border: var(--secondary-color);
+        }
+
+        /* Ocean Deep Theme */
+        body.ocean-theme {
+            --primary-color: #1E90FF; /* DodgerBlue */
+            --secondary-color: #4682B4; /* SteelBlue */
+            --dark-bg: #050A1A; /* Very dark blue-black */
+            --light-text: #E0FFFF; /* LightCyan */
+            --accent-glow: rgba(30, 144, 255, 0.7);
+            --input-bg: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(10, 15, 30, 0.9);
+            --body-bg-gradient: linear-gradient(135deg, #050A1A 0%, #102040 40%, #204080 70%, #1E90FF 100%);
+            --header-footer-bg: rgba(5, 10, 26, 0.8);
+            --nav-bg: rgba(0, 5, 10, 0.7);
+            --border-color: var(--primary-color);
+            --box-shadow-color: rgba(0, 0, 0, 0.5);
+            --settings-card-shadow: rgba(30, 144, 255, 0.2);
+            --button-cancel-bg: rgba(255, 255, 255, 0.1);
+            --button-cancel-border: var(--secondary-color);
+            --select-border: var(--secondary-color);
+        }
+
+        /* General styles using variables - these apply to all themes */
         body {
             margin: 0;
             font-family: 'Montserrat', sans-serif;
@@ -29,18 +80,16 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            /* Static background for settings and other pages */
-            background: linear-gradient(135deg, var(--dark-bg) 0%, #300a0a 40%, #8b0000 70%, #ff4500 100%);
+            background: var(--body-bg-gradient); /* Use variable for background */
+            font-size: 1em; /* Base font size */
         }
 
-        /* Removed #particle-canvas styling as it's no longer on this page */
-
         header {
-            background-color: rgba(26, 5, 5, 0.8);
+            background-color: var(--header-footer-bg);
             padding: 20px 40px;
             text-align: center;
-            border-bottom: 2px solid var(--primary-color);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 4px 15px var(--box-shadow-color);
             position: relative;
             z-index: 1;
         }
@@ -60,10 +109,10 @@
         }
 
         nav {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: var(--nav-bg);
             padding: 15px 0;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 2px 10px var(--box-shadow-color);
             position: relative;
             z-index: 1;
         }
@@ -105,17 +154,17 @@
             flex-direction: column;
             align-items: center;
             overflow-y: auto;
-            max-height: calc(100vh - 200px); /* Adjust based on header/footer height */
+            max-height: calc(100vh - 200px);
             width: 100%;
             box-sizing: border-box;
         }
 
         .settings-container {
             background-color: var(--card-bg);
-            border: 2px solid var(--primary-color);
+            border: 2px solid var(--border-color);
             border-radius: 10px;
             padding: 30px;
-            box-shadow: 0 0 20px rgba(255, 69, 0, 0.2);
+            box-shadow: 0 0 20px var(--settings-card-shadow);
             max-width: 700px;
             width: 100%;
             margin: 20px auto;
@@ -129,14 +178,14 @@
             margin-bottom: 25px;
             font-size: 2em;
             text-align: center;
-            border-bottom: 2px solid var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
             padding-bottom: 15px;
         }
 
         .setting-group {
             margin-bottom: 30px;
             padding-bottom: 20px;
-            border-bottom: 1px dashed rgba(255, 140, 0, 0.3);
+            border-bottom: 1px dashed rgba(255, 140, 0, 0.3); /* This dashed line color might need manual adjustment per theme if you want it to change */
         }
 
         .setting-group:last-child {
@@ -168,43 +217,9 @@
             margin-right: 20px;
         }
 
-        .setting-item input[type="checkbox"] {
-            appearance: none;
-            width: 40px;
-            height: 20px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            position: relative;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            outline: none;
-        }
-
-        .setting-item input[type="checkbox"]::before {
-            content: '';
-            position: absolute;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background-color: var(--light-text);
-            top: 1px;
-            left: 1px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        .setting-item input[type="checkbox"]:checked {
-            background-color: var(--primary-color);
-        }
-
-        .setting-item input[type="checkbox"]:checked::before {
-            transform: translateX(20px);
-            background-color: var(--dark-bg);
-        }
-
-        .setting-item select,
-        .setting-item input[type="range"] {
+        .setting-item select {
             padding: 10px 15px;
-            border: 1px solid var(--secondary-color);
+            border: 1px solid var(--select-border);
             border-radius: 5px;
             background-color: var(--input-bg);
             color: var(--light-text);
@@ -213,53 +228,12 @@
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
             flex: 2;
             min-width: 200px;
-            /* For range input specifically */
-            -webkit-appearance: none; /* For Chrome, Safari, Edge */
-            appearance: none;
-            height: 8px; /* Height of the track */
         }
 
-        .setting-item select:focus,
-        .setting-item input[type="range"]:focus {
+        .setting-item select:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 8px rgba(255, 69, 0, 0.5);
+            box-shadow: 0 0 8px var(--accent-glow);
         }
-
-        /* Styling for range input thumb (slider handle) */
-        .setting-item input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            cursor: grab;
-            margin-top: -6px; /* Adjust to center the thumb on the track */
-            box-shadow: 0 0 5px rgba(255, 69, 0, 0.7);
-            transition: background 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .setting-item input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            cursor: grab;
-            box-shadow: 0 0 5px rgba(255, 69, 0, 0.7);
-            transition: background 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .setting-item input[type="range"]::-webkit-slider-thumb:active {
-            cursor: grabbing;
-            background: var(--secondary-color);
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-        .setting-item input[type="range"]::-moz-range-thumb:active {
-            cursor: grabbing;
-            background: var(--secondary-color);
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-
 
         .settings-buttons {
             display: flex;
@@ -283,7 +257,7 @@
         .settings-buttons .save-button {
             background-color: var(--primary-color);
             color: var(--dark-bg);
-            box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+            box-shadow: 0 0 10px var(--accent-glow);
         }
 
         .settings-buttons .save-button:hover {
@@ -293,28 +267,28 @@
         }
 
         .settings-buttons .cancel-button {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: var(--button-cancel-bg);
             color: var(--light-text);
-            border: 2px solid var(--secondary-color);
+            border: 2px solid var(--button-cancel-border);
         }
 
         .settings-buttons .cancel-button:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.2); /* This might need theme variable */
             border-color: var(--primary-color);
             transform: translateY(-2px);
         }
 
         footer {
-            background-color: rgba(26, 5, 5, 0.8);
+            background-color: var(--header-footer-bg);
             padding: 20px;
             text-align: center;
-            border-top: 2px solid var(--primary-color);
-            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5);
+            border-top: 2px solid var(--border-color);
+            box-shadow: 0 -4px 15px var(--box-shadow-color);
             position: relative;
             z-index: 1;
             margin-top: auto;
             font-size: 0.9em;
-            color: #aaa;
+            color: var(--light-text); /* Ensure footer text changes with theme */
         }
 
         @media (max-width: 768px) {
@@ -353,8 +327,7 @@
                 margin-right: 0;
             }
 
-            .setting-item select,
-            .setting-item input[type="range"] {
+            .setting-item select {
                 width: 100%;
             }
 
@@ -397,56 +370,20 @@
             <h2>Website Settings</h2>
 
             <div class="setting-group">
-                <h3>General Preferences</h3>
+                <h3>Display Theme</h3>
                 <div class="setting-item">
                     <label for="theme-select">Theme:</label>
                     <select id="theme-select">
-                        <option value="dark">Dark (Default)</option>
-                        <option value="light" disabled>Light (Coming Soon)</option>
-                        <option value="high-contrast" disabled>High Contrast (Coming Soon)</option>
+                        <option value="chaos">Chaos (Default)</option>
+                        <option value="forest">Forest Realm</option>
+                        <option value="ocean">Ocean Deep</option>
                     </select>
-                </div>
-                <div class="setting-item">
-                    <label for="notifications-toggle">Enable Site Notifications:</label>
-                    <input type="checkbox" id="notifications-toggle" checked>
-                </div>
-                 <div class="setting-item">
-                    <label for="intro-animation-toggle">Show Intro Animation:</label>
-                    <input type="checkbox" id="intro-animation-toggle" checked>
-                </div>
-            </div>
-
-            <div class="setting-group">
-                <h3>Display & Performance</h3>
-                <div class="setting-item">
-                    <label for="reduce-motion-toggle">Reduce Motion (Disable CSS transitions/animations):</label>
-                    <input type="checkbox" id="reduce-motion-toggle">
-                </div>
-                <div class="setting-item">
-                    <label for="font-size-select">Font Size:</label>
-                    <select id="font-size-select">
-                        <option value="medium">Medium (Default)</option>
-                        <option value="small">Small</option>
-                        <option value="large">Large</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="setting-group">
-                <h3>Audio Preferences</h3>
-                <div class="setting-item">
-                    <label for="background-music-toggle">Enable Background Music:</label>
-                    <input type="checkbox" id="background-music-toggle">
-                </div>
-                <div class="setting-item">
-                    <label for="background-music-volume">Background Music Volume:</label>
-                    <input type="range" id="background-music-volume" min="0" max="100" value="50">
                 </div>
             </div>
 
             <div class="settings-buttons">
                 <button class="save-button" id="saveSettings">Save Settings</button>
-                <button class="cancel-button" id="resetSettings">Reset to Defaults</button>
+                <button class="cancel-button" id="resetSettings">Reset to Default</button>
             </div>
         </div>
     </main>
@@ -458,112 +395,54 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const themeSelect = document.getElementById('theme-select');
-            const notificationsToggle = document.getElementById('notifications-toggle');
-            const introAnimationToggle = document.getElementById('intro-animation-toggle');
-            const reduceMotionToggle = document.getElementById('reduce-motion-toggle');
-            const fontSizeSelect = document.getElementById('font-size-select');
-            const backgroundMusicToggle = document.getElementById('background-music-toggle');
-            const backgroundMusicVolume = document.getElementById('background-music-volume');
             const saveSettingsButton = document.getElementById('saveSettings');
             const resetSettingsButton = document.getElementById('resetSettings');
 
-            // Default settings
+            // Default settings (only theme)
             const defaultSettings = {
-                theme: 'dark',
-                notifications: true,
-                introAnimation: true,
-                reduceMotion: false,
-                fontSize: 'medium',
-                backgroundMusicEnabled: false,
-                backgroundMusicVolume: 50
+                theme: 'chaos', // Set default to 'chaos'
             };
 
-            // Apply font size
-            function applyFontSize(size) {
-                switch(size) {
-                    case 'small':
-                        document.body.style.fontSize = '0.9em';
-                        break;
-                    case 'large':
-                        document.body.style.fontSize = '1.2em';
-                        break;
-                    case 'medium':
-                    default:
-                        document.body.style.fontSize = '1em'; // Revert to default
-                        break;
-                }
-            }
-
-            // Apply reduce motion (for CSS transitions/animations)
-            function applyReduceMotion(enabled) {
-                // This function currently targets general CSS transitions/animations
-                // by setting a custom property on document.documentElement.
-                // Any elements that respect this property for their transitions
-                // will be affected. For example, if you have:
-                // transition: all var(--transition-speed, 0.3s) ease;
-                if (enabled) {
-                    document.documentElement.style.setProperty('--transition-speed', '0s');
-                } else {
-                    document.documentElement.style.setProperty('--transition-speed', ''); // Revert to default
-                }
-                // No need to hide particle canvas here as it's not on this page.
+            // Function to apply the theme to the body
+            function applyTheme(theme) {
+                // Remove all possible theme classes
+                document.body.classList.remove('chaos-theme', 'forest-theme', 'ocean-theme');
+                // Add the new theme class
+                document.body.classList.add(theme + '-theme');
             }
 
             // Function to load settings from localStorage or use defaults
             function loadSettings() {
                 const settings = JSON.parse(localStorage.getItem('chaosDomainWebsiteSettings')) || defaultSettings;
-
-                themeSelect.value = settings.theme;
-                notificationsToggle.checked = settings.notifications;
-                introAnimationToggle.checked = settings.introAnimation;
-                reduceMotionToggle.checked = settings.reduceMotion;
-                fontSizeSelect.value = settings.fontSize;
-                backgroundMusicToggle.checked = settings.backgroundMusicEnabled;
-                backgroundMusicVolume.value = settings.backgroundMusicVolume;
-
-                // Apply immediate effects
-                applyFontSize(settings.fontSize);
-                applyReduceMotion(settings.reduceMotion);
-
-                // Note: Intro animation logic is handled on index.html,
-                // this page just saves the preference.
+                themeSelect.value = settings.theme; // Set the dropdown to the loaded theme
+                applyTheme(settings.theme); // Apply the theme immediately to the current page
             }
 
             // Function to save settings to localStorage
             function saveSettings() {
+                const currentTheme = themeSelect.value;
                 const currentSettings = {
-                    theme: themeSelect.value,
-                    notifications: notificationsToggle.checked,
-                    introAnimation: introAnimationToggle.checked,
-                    reduceMotion: reduceMotionToggle.checked,
-                    fontSize: fontSizeSelect.value,
-                    backgroundMusicEnabled: backgroundMusicToggle.checked,
-                    backgroundMusicVolume: backgroundMusicVolume.value
+                    theme: currentTheme,
                 };
                 localStorage.setItem('chaosDomainWebsiteSettings', JSON.stringify(currentSettings));
-                alert('Settings saved successfully!');
+                applyTheme(currentTheme); // Apply theme immediately after saving
+                alert('Theme saved successfully! Please refresh other pages to see the change.');
             }
 
             // Function to reset settings to default
             function resetSettings() {
                 localStorage.removeItem('chaosDomainWebsiteSettings');
                 loadSettings(); // Reload defaults
-                alert('Settings reset to default!');
+                alert('Theme reset to default!');
             }
 
             saveSettingsButton.addEventListener('click', saveSettings);
             resetSettingsButton.addEventListener('click', resetSettings);
-
-            // Listen for changes and apply immediately (optional, but good for user feedback)
-            fontSizeSelect.addEventListener('change', (e) => applyFontSize(e.target.value));
-            reduceMotionToggle.addEventListener('change', (e) => applyReduceMotion(e.target.checked));
+            themeSelect.addEventListener('change', loadSettings); // Apply theme instantly when dropdown changes
 
             // Initial load of settings when the page loads
             loadSettings();
         });
-
-        // The intro screen logic should *only* be present in index.html to manage its visibility.
-        // It has been removed from settings.html.
     </script>
 </body>
 </html>
